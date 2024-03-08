@@ -1,0 +1,31 @@
+@ODataOrderBy_HostAddress = http://localhost:5251
+
+// Standard Get no query
+GET {{ODataOrderBy_HostAddress}}/books
+Accept: application/json
+
+###
+
+// Get with orderby works if case matches model
+GET {{ODataOrderBy_HostAddress}}/books?orderby=ISBN
+Accept: application/json
+
+###
+
+// Get with orderby works if case matches JSON
+GET {{ODataOrderBy_HostAddress}}/books?orderby=isbn
+Accept: application/json
+
+###
+
+// Get with orderby and top works if case matches model
+GET {{ODataOrderBy_HostAddress}}/books?orderby=ISBN&top=1
+Accept: application/json
+
+###
+
+// Get with orderby and top fails if case matches JSON
+GET {{ODataOrderBy_HostAddress}}/books?orderby=isbn&top=1
+Accept: application/json
+
+###
